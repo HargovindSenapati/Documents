@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0477A74B-5882-4631-B3AE-F634D8A01BE7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CSharpTestAutomation</RootNamespace>
+    <AssemblyName>CSharpTestAutomation</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver.3.8.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\packages\Selenium.Support.3.8.0\lib\net45\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="nunit.runsettings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>nunit.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="WebDrivers\chromedriver" />
+    <None Include="WebDrivers\chromedriver.exe" />
+    <None Include="WebDrivers\geckodriver" />
+    <None Include="WebDrivers\geckodriver.exe" />
+    <None Include="Config\tcfa.json" />
+    <None Include="Data\staticdata.json" />
+    <None Include="Attachments\ApplicationForm.doc" />
+    <None Include="Attachments\IdentityProof.doc" />
+    <None Include="Attachments\AddressProof.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="nunit.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>nunit.runsettings</DependentUpon>
+    </Compile>
+    <Compile Include="PageObjects\Tcfa\CashLoadingReportPage.cs" />
+    <Compile Include="PageObjects\Tcfa\LocalCollectionReportPage.cs" />
+    <Compile Include="PageObjects\Tcfa\LocChequeDepositionReportPage.cs" />
+    <Compile Include="Tests\BrowserSource.cs" />
+    <Compile Include="Tests\Base\BaseSeleniumWebTest.cs" />
+    <Compile Include="Tests\Base\BaseTest.cs" />
+    <Compile Include="Framework\Base\BasePage.cs" />
+    <Compile Include="Framework\Core\DriverFactory.cs" />
+    <Compile Include="Framework\Core\Reporting.cs" />
+    <Compile Include="Framework\Core\Wrapper.cs" />
+    <Compile Include="Framework\Handlers\DataHandler.cs" />
+    <Compile Include="Framework\Helpers\Generic.cs" />
+    <Compile Include="Constants\Tcfa\TcfaConfigKeys.cs" />
+    <Compile Include="Constants\Tcfa\TcfaDataKeys.cs" />
+    <Compile Include="PageObjects\Tcfa\ForgotPasswordPage.cs" />
+    <Compile Include="PageObjects\Tcfa\HomePage.cs" />
+    <Compile Include="PageObjects\Tcfa\LaunchApplication.cs" />
+    <Compile Include="PageObjects\Tcfa\LoginPage.cs" />
+    <Compile Include="PageObjects\Tcfa\NewCustomerRegistrationPage.cs" />
+    <Compile Include="PageObjects\Tcfa\AttachmentsPage.cs" />
+    <Compile Include="PageObjects\Tcfa\CustomerVehicleInformationPage.cs" />
+    <Compile Include="PageObjects\Tcfa\VehicleEntryPage.cs" />
+    <Compile Include="Tests\TCFALogin.cs" />
+    <Compile Include="Tests\TCFACustomerRegistration.cs" />
+    <Compile Include="PageObjects\Tcfa\PendingListPage.cs" />
+    <Compile Include="Tests\TCFAReports.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+</Project>
